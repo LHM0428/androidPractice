@@ -19,7 +19,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="55dp"
-        android:layout_toStartOf="@+id/bt_send" />
+        android:layout_toStartOf="@+id/bt_send"
+        android:textColor="@color/theme"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,7 +30,9 @@
         android:layout_marginEnd="51dp"
         android:text="send"
         android:layout_alignBottom="@+id/input_message"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@color/theme"
+        android:textColor="@color/white"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -42,7 +46,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/message_log"
-        android:layout_below="@+id/scrollView">
+        android:layout_below="@+id/scrollView"
+         android:animateLayoutChanges="true">
+
     </LinearLayout>
     </ScrollView>
+
+
 </RelativeLayout>
