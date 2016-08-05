@@ -1,19 +1,15 @@
 package com.practice.lee.chatapplication;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -22,6 +18,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private EditText Input_Message;
     private Button bt_send;
     private LinearLayout message_log;
+    private ScrollView sc_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -32,8 +29,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
         Input_Message = (EditText) findViewById(R.id.input_message);
         bt_send = (Button) findViewById(R.id.bt_send);
+        message_log = (LinearLayout) findViewById(R.id.message_log);
+        sc_text = (ScrollView) findViewById(R.id.sc_text);
         bt_send.setOnClickListener(this);
-
     }
 
 
@@ -41,12 +39,13 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.equals(bt_send)){
             String inputText = Input_Message.getText().toString();
+            Input_Message.setText("");
             String answer;
 
             TextView userMessage = new TextView(this);
             userMessage.setText(inputText);
             userMessage.setGravity(Gravity.END);
-            message_log.addView(userMessage,0);
+            message_log.addView(userMessage, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             if(inputText.contains("안녕")){
                 answer="안녕하세요";
@@ -76,8 +75,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             TextView cMessage = new TextView(this);
             cMessage.setText(answer);
             cMessage.setGravity(Gravity.START);
-            message_log.addView(cMessage,0);
-
+            message_log.addView(cMessage,LinearLayout.LayoutParams.WRAP_CONTENT);
+            sc_text.fullScroll(View.FOCUS_DOWN);
         }//bt_send
     }
 }
